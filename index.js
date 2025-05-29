@@ -1,1 +1,38 @@
-const a1_0x407ed2=a1_0xdb3f;(function(_0x35d361,_0x34d397){const _0x36820e=a1_0xdb3f,_0x335ee4=_0x35d361();while(!![]){try{const _0x5c2481=-parseInt(_0x36820e(0xb2))/0x1*(-parseInt(_0x36820e(0xa9))/0x2)+parseInt(_0x36820e(0xa8))/0x3+-parseInt(_0x36820e(0xa6))/0x4*(parseInt(_0x36820e(0xb1))/0x5)+parseInt(_0x36820e(0xa3))/0x6+-parseInt(_0x36820e(0xb0))/0x7+-parseInt(_0x36820e(0xad))/0x8*(-parseInt(_0x36820e(0xa4))/0x9)+-parseInt(_0x36820e(0xb5))/0xa*(parseInt(_0x36820e(0xb4))/0xb);if(_0x5c2481===_0x34d397)break;else _0x335ee4['push'](_0x335ee4['shift']());}catch(_0x2f6c00){_0x335ee4['push'](_0x335ee4['shift']());}}}(a1_0x42fb,0x4ab29));const net=require(a1_0x407ed2(0xaf)),{ClientHandler}=require(a1_0x407ed2(0xb6)),logger=require(a1_0x407ed2(0xb9));function calculateDurationInSeconds(_0x5911ea){const _0x31876e=a1_0x407ed2;return((performance[_0x31876e(0xba)]()-_0x5911ea)/0x3e8)[_0x31876e(0xb7)](0x2);}const server=net[a1_0x407ed2(0xae)](_0x3957ed=>{const _0x681913=a1_0x407ed2;logger[_0x681913(0xa2)](_0x681913(0xb3));const _0x5a40c8=performance[_0x681913(0xba)](),_0x33f30b=new ClientHandler(_0x3957ed);_0x33f30b['on']('disconnect',()=>{logger['info']('Client\x20connection\x20duration:\x20'+calculateDurationInSeconds(_0x5a40c8)+'\x20seconds');}),_0x33f30b['on']('error',_0x5bf0be=>{const _0x35c453=_0x681913;logger[_0x35c453(0xa7)]('Handling\x20socket\x20error:\x20'+_0x5bf0be),logger[_0x35c453(0xa2)](_0x35c453(0xaa)+calculateDurationInSeconds(_0x5a40c8)+_0x35c453(0xa5));});}),port=process['env']['PORT']||0x1389;function a1_0xdb3f(_0x13bfa7,_0x15751f){const _0x42fbb7=a1_0x42fb();return a1_0xdb3f=function(_0xdb3fa9,_0x37c298){_0xdb3fa9=_0xdb3fa9-0xa2;let _0x5af741=_0x42fbb7[_0xdb3fa9];return _0x5af741;},a1_0xdb3f(_0x13bfa7,_0x15751f);}function a1_0x42fb(){const _0x215efe=['./socket','toFixed','Server\x20listening\x20on\x20port\x20','./logger','now','info','215262MSGqGg','5313717kNmNzG','\x20seconds','92IkuZQM','error','946032fxQrng','880678zrlYtL','Client\x20connection\x20duration:\x20','Server\x20error:\x20','listen','8QSXPJR','createServer','net','266105Euehwg','66605iBiSVt','1yAWpMk','Client\x20connected','8047754XBIKZg','10wfQpKQ'];a1_0x42fb=function(){return _0x215efe;};return a1_0x42fb();}server[a1_0x407ed2(0xac)](port,()=>{const _0x24b1cf=a1_0x407ed2;logger['info'](_0x24b1cf(0xb8)+port);}),server['on'](a1_0x407ed2(0xa7),_0x4f09a3=>{const _0xf2fa6e=a1_0x407ed2;logger[_0xf2fa6e(0xa7)](_0xf2fa6e(0xab)+_0x4f09a3);});
+const net = require('net');
+const { ClientHandler } = require('./socket');
+const logger = require('./logger');
+
+// Helper function to calculate connection duration in seconds
+function calculateDurationInSeconds(startTime) {
+    // performance.now() returns milliseconds, so divide by 1000 for seconds
+    return ((performance.now() - startTime) / 1000).toFixed(2);
+}
+
+// Create the TCP server
+const server = net.createServer(socket => {
+    logger.info('Client connected');
+    const connectionStart = performance.now();
+    const client = new ClientHandler(socket);
+
+    client.on('disconnect', () => {
+        logger.info('Client connection duration: ' + calculateDurationInSeconds(connectionStart) + ' seconds');
+    });
+
+    client.on('error', err => {
+        logger.error('Handling socket error: ' + err);
+        logger.info('Client connection duration: ' + calculateDurationInSeconds(connectionStart) + ' seconds');
+    });
+});
+
+// Use environment variable PORT or default to 5001
+const port = process.env.PORT || 5001;
+
+// Start listening
+server.listen(port, () => {
+    logger.info('Server listening on port ' + port);
+});
+
+// Handle server-level errors
+server.on('error', err => {
+    logger.error('Server error: ' + err);
+});

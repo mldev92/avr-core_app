@@ -1,1 +1,77 @@
-function a0_0x54fd(){const _0x48703f=['env','6YeCbwu','9515570VOacGd','3247536ItAfHF','http://localhost:6010/speech-to-text-stream','9xnHqEU','transcript','3081iBIIhb','stream','toString','audio/l16','1GTTMkd','emit','Received\x20data\x20from\x20external\x20asr\x20service:\x20','6elZsxU','message','Streaming\x20stopped','3524768ivqSYI','dotenv','end','write','151220IqQueP','error','post','info','4025105ttUBnk','data','Error\x20during\x20external\x20service\x20streaming:\x20','axios','responseStream','./logger','24612IAaaDq','7vmcAds','events','Error\x20starting\x20streaming\x20to\x20external\x20asr\x20service:\x20','exports','chunked','startStreaming','5905471oeqXlt'];a0_0x54fd=function(){return _0x48703f;};return a0_0x54fd();}function a0_0x1bf7(_0x2615be,_0x2c96c5){const _0x54fd67=a0_0x54fd();return a0_0x1bf7=function(_0x1bf7af,_0x30a193){_0x1bf7af=_0x1bf7af-0x1c5;let _0x19692d=_0x54fd67[_0x1bf7af];return _0x19692d;},a0_0x1bf7(_0x2615be,_0x2c96c5);}const a0_0x4209f0=a0_0x1bf7;(function(_0x2b6553,_0x1f8dde){const _0x1b8368=a0_0x1bf7,_0x2de976=_0x2b6553();while(!![]){try{const _0x474864=-parseInt(_0x1b8368(0x1c6))/0x1*(-parseInt(_0x1b8368(0x1d0))/0x2)+-parseInt(_0x1b8368(0x1e3))/0x3*(-parseInt(_0x1b8368(0x1e5))/0x4)+parseInt(_0x1b8368(0x1d4))/0x5*(parseInt(_0x1b8368(0x1c9))/0x6)+parseInt(_0x1b8368(0x1db))/0x7*(parseInt(_0x1b8368(0x1cc))/0x8)+-parseInt(_0x1b8368(0x1e7))/0x9*(parseInt(_0x1b8368(0x1e4))/0xa)+-parseInt(_0x1b8368(0x1e1))/0xb+-parseInt(_0x1b8368(0x1da))/0xc*(parseInt(_0x1b8368(0x1e9))/0xd);if(_0x474864===_0x1f8dde)break;else _0x2de976['push'](_0x2de976['shift']());}catch(_0x492a0f){_0x2de976['push'](_0x2de976['shift']());}}}(a0_0x54fd,0xecefa),require(a0_0x4209f0(0x1cd))['config']());const axios=require(a0_0x4209f0(0x1d7)),{PassThrough}=require(a0_0x4209f0(0x1ea)),EventEmitter=require(a0_0x4209f0(0x1dc)),logger=require(a0_0x4209f0(0x1d9));class Asr extends EventEmitter{constructor(){const _0x34d1f7=a0_0x4209f0;super(),this[_0x34d1f7(0x1ea)]=null,this['responseStream']=null;}async[a0_0x4209f0(0x1e0)](){const _0x2511de=a0_0x4209f0;this[_0x2511de(0x1ea)]=new PassThrough();try{const _0x263475=await axios({'method':_0x2511de(0x1d2),'url':process[_0x2511de(0x1e2)]['ASR_URL']||_0x2511de(0x1e6),'headers':{'Content-Type':_0x2511de(0x1c5),'Transfer-Encoding':_0x2511de(0x1df)},'data':this['stream'],'responseType':'stream'});this[_0x2511de(0x1d8)]=_0x263475[_0x2511de(0x1d5)],this[_0x2511de(0x1d8)]['on'](_0x2511de(0x1d5),_0x2f58e6=>{const _0x538491=_0x2511de,_0x114e06=_0x2f58e6[_0x538491(0x1eb)]();logger['info'](_0x538491(0x1c8)+_0x114e06),this[_0x538491(0x1c7)](_0x538491(0x1e8),_0x114e06);}),this[_0x2511de(0x1d8)]['on'](_0x2511de(0x1ce),()=>{const _0xe17667=_0x2511de;logger[_0xe17667(0x1d3)]('Streaming\x20complete'),this[_0xe17667(0x1c7)](_0xe17667(0x1ce));}),this[_0x2511de(0x1d8)]['on']('error',_0x35f58f=>{const _0x35ffac=_0x2511de;logger['error'](_0x35ffac(0x1d6)+_0x35f58f),this['emit'](_0x35ffac(0x1d1),_0x35f58f);});}catch(_0x103038){logger['error'](_0x2511de(0x1dd)+_0x103038[_0x2511de(0x1ca)]),this[_0x2511de(0x1c7)](_0x2511de(0x1d1),_0x103038);}}async['processAudio'](_0x56192f){const _0x3c0293=a0_0x4209f0;!this[_0x3c0293(0x1ea)]?await this[_0x3c0293(0x1e0)]():this[_0x3c0293(0x1ea)][_0x3c0293(0x1cf)](_0x56192f);}['stopStreaming'](){const _0x1cc2fe=a0_0x4209f0;this['stream']&&(this[_0x1cc2fe(0x1ea)][_0x1cc2fe(0x1ce)](),this[_0x1cc2fe(0x1ea)]=null,logger[_0x1cc2fe(0x1d3)](_0x1cc2fe(0x1cb)));}}module[a0_0x4209f0(0x1de)]={'Asr':Asr};
+// Load environment variables from .env file
+require('dotenv').config();
+
+const axios = require('axios');
+const { PassThrough } = require('stream');
+const EventEmitter = require('events');
+const logger = require('./logger');
+
+class Asr extends EventEmitter {
+  constructor() {
+    super();
+    this.stream = null;           // For sending audio data
+    this.responseStream = null;   // For receiving ASR results
+  }
+
+  // Start streaming audio to the ASR service
+  async startStreaming() {
+    this.stream = new PassThrough();
+
+    try {
+      const response = await axios({
+        method: 'post',
+        url: process.env.ASR_URL || 'http://localhost:6010/speech-to-text-stream',
+        headers: {
+          'Content-Type': 'audio/l16',
+          'Transfer-Encoding': 'chunked'
+        },
+        data: this.stream,
+        responseType: 'stream'
+      });
+
+      this.responseStream = response.data;
+
+      // Listen for data (transcription results) from ASR service
+      this.responseStream.on('data', (chunk) => {
+        const transcript = chunk.toString();
+        logger.info('Received data from external asr service: ' + transcript);
+        this.emit('transcript', transcript);
+      });
+
+      // Listen for end of stream
+      this.responseStream.on('end', () => {
+        logger.info('Streaming complete');
+        this.emit('end');
+      });
+
+      // Listen for errors
+      this.responseStream.on('error', (err) => {
+        logger.error('Error during external service streaming: ' + err);
+        this.emit('error', err);
+      });
+
+    } catch (err) {
+      logger.error('Error starting streaming to external asr service: ' + err.message);
+      this.emit('error', err);
+    }
+  }
+
+  // Send audio data to the ASR service
+  async processAudio(audioChunk) {
+    if (!this.stream) {
+      await this.startStreaming();
+    }
+    this.stream.write(audioChunk);
+  }
+
+  // Stop streaming audio and clean up
+  stopStreaming() {
+    if (this.stream) {
+      this.stream.end();
+      this.stream = null;
+      logger.info('Streaming stopped');
+    }
+  }
+}
+
+module.exports = { Asr };

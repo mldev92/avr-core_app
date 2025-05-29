@@ -1,1 +1,117 @@
-const a2_0x86a3f=a2_0x2b9a;function a2_0x2b9a(_0x132804,_0x56471a){const _0x4a6d44=a2_0x4a6d();return a2_0x2b9a=function(_0x2b9ada,_0x30a0ba){_0x2b9ada=_0x2b9ada-0x11b;let _0x31dae6=_0x4a6d44[_0x2b9ada];return _0x31dae6;},a2_0x2b9a(_0x132804,_0x56471a);}(function(_0x20b933,_0x373566){const _0x4da475=a2_0x2b9a,_0x431aa9=_0x20b933();while(!![]){try{const _0x382f9c=-parseInt(_0x4da475(0x13a))/0x1*(-parseInt(_0x4da475(0x13c))/0x2)+parseInt(_0x4da475(0x133))/0x3+parseInt(_0x4da475(0x139))/0x4+parseInt(_0x4da475(0x146))/0x5+parseInt(_0x4da475(0x123))/0x6+parseInt(_0x4da475(0x12d))/0x7*(-parseInt(_0x4da475(0x129))/0x8)+-parseInt(_0x4da475(0x11b))/0x9*(parseInt(_0x4da475(0x11e))/0xa);if(_0x382f9c===_0x373566)break;else _0x431aa9['push'](_0x431aa9['shift']());}catch(_0x1f6552){_0x431aa9['push'](_0x431aa9['shift']());}}}(a2_0x4a6d,0xd518c),require(a2_0x86a3f(0x131))[a2_0x86a3f(0x126)]());const axios=require('axios'),EventEmitter=require('events'),logger=require(a2_0x86a3f(0x12e));class Llm extends EventEmitter{constructor(){super(),this['accumulatedContent']='';}async[a2_0x86a3f(0x128)](_0x4c9e44,_0x4b8dbc,_0x5136c5){const _0x272a8a=a2_0x86a3f;try{const _0x43ade5=await axios({'method':_0x272a8a(0x124),'url':process[_0x272a8a(0x11c)][_0x272a8a(0x141)]||_0x272a8a(0x145),'headers':{'Content-Type':'application/json'},'data':{'uuid':_0x4c9e44,'message':_0x4b8dbc,'messages':_0x5136c5},'responseType':'stream'});_0x43ade5[_0x272a8a(0x142)]['on'](_0x272a8a(0x142),_0x226e3e=>{const _0x152b43=_0x272a8a,_0x4006d0=_0x226e3e['toString']();logger[_0x152b43(0x121)]('Received\x20data\x20from\x20LLM\x20service:\x20'+_0x4006d0);try{const _0x2eef59=JSON['parse'](_0x4006d0);if(_0x2eef59[_0x152b43(0x12a)]===_0x152b43(0x12b))this[_0x152b43(0x136)](_0x2eef59[_0x152b43(0x12f)]);else _0x2eef59[_0x152b43(0x12a)]===_0x152b43(0x120)?this['handleAudio'](_0x2eef59[_0x152b43(0x12f)]):logger['error']('Unknown\x20data\x20type:\x20'+_0x2eef59[_0x152b43(0x12a)]);}catch(_0x431ce9){logger[_0x152b43(0x125)](_0x152b43(0x12c)+_0x431ce9),this[_0x152b43(0x144)](_0x152b43(0x125),_0x431ce9);}}),_0x43ade5['data']['on'](_0x272a8a(0x122),()=>{const _0x1e7e04=_0x272a8a;logger[_0x1e7e04(0x121)](_0x1e7e04(0x147));if(this['accumulatedContent']){const _0x56d517=this[_0x1e7e04(0x13e)](this[_0x1e7e04(0x13b)]);logger[_0x1e7e04(0x121)]('Cleaned\x20text\x20content\x20on\x20end'),this[_0x1e7e04(0x140)](_0x56d517),this['accumulatedContent']='';}this[_0x1e7e04(0x144)]('end');}),_0x43ade5[_0x272a8a(0x142)]['on'](_0x272a8a(0x125),_0x172919=>{const _0x5400aa=_0x272a8a;logger[_0x5400aa(0x125)](_0x5400aa(0x143)+_0x172919),this[_0x5400aa(0x144)](_0x5400aa(0x125),_0x172919);});}catch(_0x191c96){logger['error']('Error\x20sending\x20data\x20to\x20LLM\x20service:\x20'+_0x191c96[_0x272a8a(0x138)]),this[_0x272a8a(0x144)]('error',_0x191c96);}}[a2_0x86a3f(0x136)](_0x41b4ea){const _0x57dc4f=a2_0x86a3f;logger[_0x57dc4f(0x121)](_0x57dc4f(0x130)+_0x41b4ea),this['accumulatedContent']+=_0x41b4ea;const _0x2d169a=this['accumulatedContent'][_0x57dc4f(0x135)](/[^.!?]*[.!?]/g);_0x2d169a&&(_0x2d169a[_0x57dc4f(0x11f)](_0x170265=>{const _0x4e786d=_0x57dc4f,_0x488bea=this['cleanText'](_0x170265);logger[_0x4e786d(0x121)](_0x4e786d(0x13d)+_0x488bea),this[_0x4e786d(0x144)](_0x4e786d(0x12b),_0x488bea);}),this[_0x57dc4f(0x13b)]=this[_0x57dc4f(0x13b)][_0x57dc4f(0x132)](/[^.!?]*[.!?]/g,''));}[a2_0x86a3f(0x140)](_0x219ce9){const _0xb21e7e=a2_0x86a3f,_0x17da84=_0x219ce9['match'](/[^.!?]*[.!?]/g);_0x17da84&&_0x17da84[_0xb21e7e(0x11f)](_0xcc6368=>{const _0x3d35f3=_0xb21e7e;logger[_0x3d35f3(0x121)](_0x3d35f3(0x11d)+_0xcc6368),this['emit']('text',_0xcc6368);});}[a2_0x86a3f(0x127)](_0x5ce175){const _0x116b42=a2_0x86a3f;logger[_0x116b42(0x121)](_0x116b42(0x137)+_0x5ce175),this['emit'](_0x116b42(0x120),_0x5ce175);}['cleanText'](_0x335d9c){const _0x3cb47e=a2_0x86a3f;return _0x335d9c[_0x3cb47e(0x132)](/[^\p{L}\p{N}\p{P}\p{Z}\p{M}\s]/gu,'')[_0x3cb47e(0x132)](/【.*?】/g,'')['replace'](/\*+/g,'')[_0x3cb47e(0x132)](/\n+/g,'\x20')[_0x3cb47e(0x132)](/#+/g,'')[_0x3cb47e(0x134)]();}}module[a2_0x86a3f(0x13f)]={'Llm':Llm};function a2_0x4a6d(){const _0x48e1b2=['data','Error\x20during\x20LLM\x20streaming:\x20','emit','http://localhost:6009/prompt-stream','4910815szeDri','LLM\x20streaming\x20complete','99GPpVPA','env','Emitting\x20complete\x20sentence:\x20','2201410LrzZSx','forEach','audio','info','end','9694074XCYmAa','post','error','config','handleAudio','sendToLlm','24QLwqPt','type','text','Error\x20parsing\x20LLM\x20service\x20response:\x20','3492230vzhPwP','./logger','content','Handling\x20text\x20content:\x20','dotenv','replace','206325BDxigA','trim','match','handleText','Handling\x20audio\x20chunk:\x20','message','3462996PbxIKl','1PaCbaq','accumulatedContent','2517398MsbRUb','Cleaned\x20text\x20content:\x20','cleanText','exports','emitCompleteSentences','LLM_URL'];a2_0x4a6d=function(){return _0x48e1b2;};return a2_0x4a6d();}
+// Load environment variables
+require('dotenv').config();
+
+const axios = require('axios');
+const EventEmitter = require('events');
+const logger = require('./logger');
+
+class Llm extends EventEmitter {
+    constructor() {
+        super();
+        this.accumulatedContent = '';
+    }
+
+    // Send a message to the LLM and handle the streaming response
+    async sendToLlm(uuid, message, messages) {
+        try {
+            const response = await axios({
+                method: 'post',
+                url: process.env.LLM_URL || 'http://localhost:6009/prompt-stream',
+                headers: { 'Content-Type': 'application/json' },
+                data: { uuid, message, messages },
+                responseType: 'stream'
+            });
+
+            // Listen for data chunks from the LLM
+            response.data.on('data', chunk => {
+                const chunkStr = chunk.toString();
+                logger.info('Received data from LLM service: ' + chunkStr);
+
+                try {
+                    const parsed = JSON.parse(chunkStr);
+
+                    if (parsed.type === 'text') {
+                        this.handleText(parsed.content);
+                    } else if (parsed.type === 'audio') {
+                        this.handleAudio(parsed.content);
+                    } else {
+                        logger.error('Unknown data type: ' + parsed.type);
+                    }
+                } catch (err) {
+                    logger.error('Error parsing LLM service response: ' + err);
+                    this.emit('error', err);
+                }
+            });
+
+            // When the stream ends
+            response.data.on('end', () => {
+                logger.info('LLM streaming complete');
+                if (this.accumulatedContent) {
+                    const cleaned = this.cleanText(this.accumulatedContent);
+                    logger.info('Cleaned text content on end');
+                    this.emitCompleteSentences(cleaned);
+                    this.accumulatedContent = '';
+                }
+                this.emit('end');
+            });
+
+            // Handle stream errors
+            response.data.on('error', err => {
+                logger.error('Error during LLM streaming: ' + err);
+                this.emit('error', err);
+            });
+
+        } catch (err) {
+            logger.error('Error sending data to LLM service: ' + err.message);
+            this.emit('error', err);
+        }
+    }
+
+    // Handle text chunks from the LLM
+    handleText(textChunk) {
+        logger.info('Handling text content: ' + textChunk);
+        this.accumulatedContent += textChunk;
+
+        // Split into complete sentences
+        const sentences = this.accumulatedContent.match(/[^.!?]*[.!?]/g);
+        if (sentences) {
+            sentences.forEach(sentence => {
+                const cleaned = this.cleanText(sentence);
+                logger.info('Emitting complete sentence: ' + cleaned);
+                this.emit('text', cleaned);
+            });
+            // Remove emitted sentences from accumulatedContent
+            this.accumulatedContent = this.accumulatedContent.replace(/[^.!?]*[.!?]/g, '');
+        }
+    }
+
+    // Emit all complete sentences in a string
+    emitCompleteSentences(text) {
+        const sentences = text.match(/[^.!?]*[.!?]/g);
+        if (sentences) {
+            sentences.forEach(sentence => {
+                logger.info('Emitting complete sentence: ' + sentence);
+                this.emit('text', sentence);
+            });
+        }
+    }
+
+    // Handle audio chunks from the LLM
+    handleAudio(audioChunk) {
+        logger.info('Handling audio chunk: ' + audioChunk);
+        this.emit('audio', audioChunk);
+    }
+
+    // Clean up text: remove unwanted characters, formatting, etc.
+    cleanText(text) {
+        return text
+            .replace(/[^\p{L}\p{N}\p{P}\p{Z}\p{M}\s]/gu, '') // Remove unwanted unicode
+            .replace(/【.*?】/g, '') // Remove 【...】 blocks
+            .replace(/\*+/g, '') // Remove asterisks
+            .replace(/\n+/g, ' ') // Replace newlines with space
+            .replace(/#+/g, '') // Remove hashtags
+            .trim();
+    }
+}
+
+module.exports = { Llm };

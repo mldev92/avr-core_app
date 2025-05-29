@@ -1,1 +1,20 @@
-const a3_0x1e210b=a3_0x5912;(function(_0x51c293,_0x45303c){const _0x3bf37b=a3_0x5912,_0x1edfe6=_0x51c293();while(!![]){try{const _0x837966=-parseInt(_0x3bf37b(0xe5))/0x1+parseInt(_0x3bf37b(0xe4))/0x2+parseInt(_0x3bf37b(0xe7))/0x3*(parseInt(_0x3bf37b(0xe6))/0x4)+parseInt(_0x3bf37b(0xde))/0x5+-parseInt(_0x3bf37b(0xdd))/0x6*(-parseInt(_0x3bf37b(0xd9))/0x7)+-parseInt(_0x3bf37b(0xdc))/0x8+-parseInt(_0x3bf37b(0xd8))/0x9*(-parseInt(_0x3bf37b(0xe3))/0xa);if(_0x837966===_0x45303c)break;else _0x1edfe6['push'](_0x1edfe6['shift']());}catch(_0x74d449){_0x1edfe6['push'](_0x1edfe6['shift']());}}}(a3_0x49bb,0xaf460));function a3_0x5912(_0xcc6fc2,_0x26d80c){const _0x49bb9c=a3_0x49bb();return a3_0x5912=function(_0x5912a7,_0x1c9579){_0x5912a7=_0x5912a7-0xd8;let _0x6a10f7=_0x49bb9c[_0x5912a7];return _0x6a10f7;},a3_0x5912(_0xcc6fc2,_0x26d80c);}const {createLogger,format,transports}=require(a3_0x1e210b(0xe0)),logger=createLogger({'level':a3_0x1e210b(0xda),'format':format[a3_0x1e210b(0xdb)](format[a3_0x1e210b(0xdf)]({'format':'YYYY-MM-DD\x20HH:mm:ss'}),format['printf'](({timestamp:_0x12a15f,level:_0x53cb2f,message:_0x4bd912})=>_0x12a15f+'\x20['+_0x53cb2f['toUpperCase']()+']:\x20'+_0x4bd912)),'transports':[new transports[(a3_0x1e210b(0xe1))]()]});function a3_0x49bb(){const _0x14753b=['410011JlPCZB','info','combine','9969472TeEtzt','6vOBsCD','770410jfwTOP','timestamp','winston','Console','exports','26551510dNzXQD','310800abhdmr','1111090dGeatp','328gHyUDz','1902PZedNK','9QbobAg'];a3_0x49bb=function(){return _0x14753b;};return a3_0x49bb();}module[a3_0x1e210b(0xe2)]=logger;
+// Import the winston logging library
+const { createLogger, format, transports } = require('winston');
+
+// Create a logger instance with specific settings
+const logger = createLogger({
+  level: 'info', // Log level: info and above (info, warn, error)
+  format: format.combine(
+    format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), // Add timestamp
+    format.printf(({ timestamp, level, message }) => {
+      // Custom log message format
+      return `${timestamp} [${level.toUpperCase()}]: ${message}`;
+    })
+  ),
+  transports: [
+    new transports.Console() // Output logs to the console
+  ]
+});
+
+// Export the logger so it can be used in other files
+module.exports = logger;
